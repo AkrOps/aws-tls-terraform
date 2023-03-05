@@ -9,7 +9,7 @@ resource "tls_self_signed_cert" "ca" {
   private_key_pem = tls_private_key.ca.private_key_pem
 
   subject {
-    common_name = ca_cert_common_name
+    common_name = var.ca_cert_common_name
   }
 
   validity_period_hours = var.ca_validity_period_hours

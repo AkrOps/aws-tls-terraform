@@ -52,7 +52,7 @@ variable "dns_sans" {
   description = "DNS SANs (Subject Alternative Names) for TLS certs."
   default     = ["localhost"]
   validation {
-    condition     = length(var.cert_sans) > 0
+    condition     = length(var.dns_sans) > 0
     error_message = "At least one SAN must be provided."
   }
 }

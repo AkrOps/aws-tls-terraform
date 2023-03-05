@@ -5,7 +5,7 @@ output "acm_cert_arn" {
 
 output "cert_sans" {
   description = "Certificate Subject Alternative Names"
-  value       = var.cert_sans
+  value       = var.dns_sans
 }
 
 output "secrets_manager_arn" {
