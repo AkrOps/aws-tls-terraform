@@ -2,8 +2,8 @@ resource "null_resource" "certs_local_output" {
   count = var.output_certs_locally ? 1 : 0
 
   triggers = {
-    ca_cert = tls_self_signed_cert.ca.cert_pem
-    leaf_cert = tls_locally_signed_cert.leaf.cert_pem
+    ca_cert      = tls_self_signed_cert.ca.cert_pem
+    leaf_cert    = tls_locally_signed_cert.leaf.cert_pem
     leaf_privkey = tls_private_key.leaf.private_key_pem
   }
 
