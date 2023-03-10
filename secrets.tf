@@ -1,4 +1,6 @@
 resource "aws_secretsmanager_secret" "tls" {
+  count = var.save_to_secrets_manager ? 1 : 0
+
   name                    = "${var.project_id}-tls-secret"
   description             = "${var.project_id} TLS certs and private keys"
   kms_key_id              = var.kms_key_id
@@ -17,6 +19,8 @@ locals {
 }
 
 resource "aws_secretsmanager_secret_version" "tls" {
-  secret_id     = aws_secretsmanager_secret.tls.id
+  count = var.save_to_secrets_manager ? 1 : 0
+
+  secret_id     = aws_secretsmanager_secret.tls[0].id
   secret_string = local.secret
 }

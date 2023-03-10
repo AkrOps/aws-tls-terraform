@@ -41,6 +41,12 @@ variable "import_leaf_cert_into_acm" {
   default     = false
 }
 
+variable "save_to_secrets_manager" {
+  type        = bool
+  description = "Save the leaf/server certificate and key (and CA certificate) to Secrets Manager."
+  default     = true
+}
+
 variable "ip_sans" {
   type        = list(string)
   description = "IP SANs (Subject Alternative Names) for TLS certs."

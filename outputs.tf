@@ -10,5 +10,5 @@ output "cert_sans" {
 
 output "secrets_manager_arn" {
   description = "ARN of secrets_manager secret"
-  value       = aws_secretsmanager_secret.tls.arn
+  value       = try(aws_secretsmanager_secret.tls[0].arn, null)
 }
