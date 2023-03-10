@@ -47,6 +47,18 @@ variable "save_to_secrets_manager" {
   default     = true
 }
 
+variable "output_certs_locally" {
+  type        = bool
+  description = "Output the leaf/server certificate and key (and CA certificate) locally."
+  default     = false
+}
+
+variable "output_ca_cert_locally" {
+  type        = bool
+  description = "Output the CA certificate locally."
+  default     = false
+}
+
 variable "ip_sans" {
   type        = list(string)
   description = "IP SANs (Subject Alternative Names) for TLS certs."
