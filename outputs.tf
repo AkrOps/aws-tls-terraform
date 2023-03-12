@@ -5,7 +5,12 @@ output "acm_cert_arn" {
 
 output "cert_sans" {
   description = "Certificate Subject Alternative Names"
-  value       = var.dns_sans
+  value       = tls_cert_request.leaf.dns_names
+}
+
+output "cert_ip_sans" {
+  description = "Certificate Subject Alternative Names"
+  value       = tls_cert_request.leaf.ip_addresses
 }
 
 output "secrets_manager_arn" {
