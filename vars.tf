@@ -9,6 +9,18 @@ variable "kms_key_id" {
   default     = null
 }
 
+variable "create_cmk" {
+  type        = bool
+  description = "Create a new AWS KMS CMK to be used by Secrets Manager."
+  default     = false
+}
+
+variable "cmk_deletion_window_in_days" {
+  type        = number
+  description = "Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days. This variable is ignored if create_cmk is false."
+  default     = 30
+}
+
 variable "recovery_window" {
   type        = number
   description = "Number of days that Secrets Manager waits before it can delete the secret."
@@ -19,7 +31,7 @@ variable "tags" {
   type        = map(string)
   description = "Tags for secrets manager secret."
   default = {
-    "Name" = "tls-cert"
+    "Name" = "tls-cert-module"
   }
 }
 

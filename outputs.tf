@@ -12,3 +12,8 @@ output "secrets_manager_arn" {
   description = "ARN of secrets_manager secret"
   value       = try(aws_secretsmanager_secret.tls[0].arn, null)
 }
+
+output "cmk_id" {
+  description = "ID of the KMS key used to encrypt the secrets (if one was created)"
+  value       = try(aws_kms_key.this[0].key_id, null)
+}

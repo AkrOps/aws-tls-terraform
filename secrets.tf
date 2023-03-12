@@ -3,7 +3,7 @@ resource "aws_secretsmanager_secret" "tls" {
 
   name                    = "${var.project_id}-tls-secret"
   description             = "${var.project_id} TLS certs and private keys"
-  kms_key_id              = var.kms_key_id
+  kms_key_id              = var.create_cmk ? aws_kms_key.this[0].key_id : var.kms_key_id
   recovery_window_in_days = var.recovery_window
   tags                    = var.tags
 }
